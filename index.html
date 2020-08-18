@@ -5,6 +5,9 @@
     </head>
     <body>
         <script>
+
+            let playerScore = 0;
+            let computerScore = 0;
             function computerPlay() {
                 let randomNum = Math.ceil(Math.random()*3);
                 console.log(randomNum);
@@ -18,43 +21,47 @@
                     return 'Scissors'
                 }
             }
-            function playRound(playerSelection, computerSelection) {
-                playerSelection = playerSelection.toLowerCase();
-                computerSelection = computerSelection.toLowerCase();
 
-                if (playerSelection == 'rock' && computerSelection == 'rock' 
-                    || playerSelection =='paper' && computerSelection == 'paper'
-                    || playerSelection == 'scissors' && computerSelection == 'scissors') {
-                        return `It's a tie! You chose: ${ playerSelection } and Computer chose: ${computerSelection}`;
+            function playRound(playerSelection, computerSelection) {
+                let playerSel = playerSelection.toLowerCase();
+                let computerSel = computerSelection.toLowerCase();
+
+                if (playerSel == 'rock' && computerSel == 'rock' 
+                    || playerSel =='paper' && computerSel == 'paper'
+                    || playerSel == 'scissors' && computerSel == 'scissors') {
+                        return `It's a tie! \nYou: ${ playerSel } | Computer: ${computerSel}`;
                 
-                } else if (playerSelection == 'rock' && computerSelection == 'paper' 
-                    || playerSelection == 'scissors' && computerSelection == 'rock' 
-                    || playerSelection == 'paper' && computerSelection == 'scissors') {
-                        return `You Lose! ${ computerSelection } beats ${ playerSelection }`;
+                } else if (playerSel == 'rock' && computerSel == 'paper' 
+                    || playerSel == 'scissors' && computerSel == 'rock' 
+                    || playerSel == 'paper' && computerSel == 'scissors') {
+                        return `You Lose! ${ computerSel } beats ${ playerSel }`;
                 
-                } else if (computerSelection == 'rock' && playerSelection == 'paper' 
-                || computerSelection == 'scissors' && playerSelection == 'rock' 
-                || computerSelection == 'paper' && playerSelection == 'scissors') {
-                        return `You Win! ${ playerSelection } beats ${ computerSelection }`;
+                } else if (computerSel == 'rock' && playerSel == 'paper' 
+                || computerSel == 'scissors' && playerSel == 'rock' 
+                || computerSel == 'paper' && playerSel == 'scissors') {
+                        return `You Win! ${ playerSel } beats ${ computerSel }`;
                 
-                } else if (playerSelection != 'rock'
-                || playerSelection != 'paper' 
-                || playerSelection != 'scissors') {
-                    return `${ playerSelection } is not a valid option`;
+                } else if (playerSel != 'rock'
+                || playerSel != 'paper' 
+                || playerSel != 'scissors') {
+                    return `${ playerSel } is not a valid option`;
                 }
             }
 
             function game() {
-                let playerPoints = 0;
-                let computerPoints = 0;
+                let playerSelection;
 
                 console.log("ROCK-PAPER-SCISSORS");
                 
-                for(let rounds=1; rounds < 6; rounds++) {
+                for(let rounds = 1; rounds < 6; rounds++) {
+                    computerSelection = computerPlay();
                     console.log(`____________________`)
                     console.log(`Round ${ rounds }:`)
                     playerSelection = prompt("Choose rock, paper or scissors");
-                    console.log(playRound(playerSelection, computerPlay()));
+                    console.log(playRound(playerSelection, computerSelection()));
+                    
+                    console.log(`Player Score: ${ playerPoints }`);
+                    console.log(`Computer Score: ${ computerPoints }`);
                 }
             }
 
