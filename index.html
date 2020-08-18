@@ -16,10 +16,10 @@
                         return 'Rock';
                         
                 } else if (randomNum == 2) {
-                    return 'Paper'
+                    return 'Paper';
 
                 } else if (randomNum == 3) {
-                    return 'Scissors'
+                    return 'Scissors';
                 }
             }
 
@@ -59,13 +59,24 @@
                 console.log("ROCK-PAPER-SCISSORS");
                 
                 for(let rounds = 1; rounds <=5; rounds++) {
-                    console.log(`++++++++ Round ${ rounds } ++++++++`)
+                    console.log(`++++++++ Round ${ rounds } ++++++++`);
                     playerSelection = prompt("Choose rock, paper or scissors");
                     playRound(playerSelection, computerPlay());
                     
                     console.log(`Player Score: ${ playerScore }`);
                     console.log(`Computer Score: ${ computerScore }`);
                 }
+                if (playerScore > computerScore) {
+                    console.log(`Congratulations! You won!`);
+                
+                } else if (playerScore < computerScore){
+                    console.log(`Oh no! You lost!`);
+                
+                } else {
+                    console.log(`It's a tie!`);
+                }
+                console.log(`++++++++ Final Score ++++++++`);
+                console.log(`Player Score: ${ playerScore } | Computer Score: ${ computerScore }`);
             }
 
             game();
