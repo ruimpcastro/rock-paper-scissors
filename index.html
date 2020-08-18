@@ -8,6 +8,7 @@
 
             let playerScore = 0;
             let computerScore = 0;
+
             function computerPlay() {
                 let randomNum = Math.ceil(Math.random()*3);
                 console.log(randomNum);
@@ -29,22 +30,26 @@
                 if (playerSel == 'rock' && computerSel == 'rock' 
                     || playerSel =='paper' && computerSel == 'paper'
                     || playerSel == 'scissors' && computerSel == 'scissors') {
-                        return `It's a tie! \nYou: ${ playerSel } | Computer: ${computerSel}`;
+                        console.log(`It's a tie! \nYou: ${ playerSel } | Computer: ${computerSel}`);
+                        return undefined;
                 
                 } else if (playerSel == 'rock' && computerSel == 'paper' 
                     || playerSel == 'scissors' && computerSel == 'rock' 
                     || playerSel == 'paper' && computerSel == 'scissors') {
-                        return `You Lose! ${ computerSel } beats ${ playerSel }`;
+                        console.log(`You Lose! ${ computerSel } beats ${ playerSel }`);
+                        return computerScore++;
                 
                 } else if (computerSel == 'rock' && playerSel == 'paper' 
                 || computerSel == 'scissors' && playerSel == 'rock' 
                 || computerSel == 'paper' && playerSel == 'scissors') {
-                        return `You Win! ${ playerSel } beats ${ computerSel }`;
+                        console.log(`You Win! ${ playerSel } beats ${ computerSel }`);
+                        return playerScore++;
                 
                 } else if (playerSel != 'rock'
                 || playerSel != 'paper' 
                 || playerSel != 'scissors') {
-                    return `${ playerSel } is not a valid option`;
+                    console.log(`${ playerSel } is not a valid option`);
+                    return undefined;
                 }
             }
 
@@ -53,15 +58,13 @@
 
                 console.log("ROCK-PAPER-SCISSORS");
                 
-                for(let rounds = 1; rounds < 6; rounds++) {
-                    computerSelection = computerPlay();
-                    console.log(`____________________`)
-                    console.log(`Round ${ rounds }:`)
+                for(let rounds = 1; rounds <=5; rounds++) {
+                    console.log(`++++++++ Round ${ rounds } ++++++++`)
                     playerSelection = prompt("Choose rock, paper or scissors");
-                    console.log(playRound(playerSelection, computerSelection()));
+                    playRound(playerSelection, computerPlay());
                     
-                    console.log(`Player Score: ${ playerPoints }`);
-                    console.log(`Computer Score: ${ computerPoints }`);
+                    console.log(`Player Score: ${ playerScore }`);
+                    console.log(`Computer Score: ${ computerScore }`);
                 }
             }
 
