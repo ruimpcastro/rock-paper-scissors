@@ -6,19 +6,46 @@
     <body>
         <script>
             function computerPlay() {
-                let computerSelect = Math.ceil(Math.random()*3);
-                console.log(computerSelect);
-                if (computerSelect == 1) {
-                        console.log("Rock");
+                let randomNum = Math.ceil(Math.random()*3);
+                console.log(randomNum);
+                if (randomNum == 1) {
+                        return 'Rock';
                         
-                } else if (computerSelect == 2){
-                    console.log("Paper");
+                } else if (randomNum == 2) {
+                    return 'Paper'
 
-                } else if (computerSelect == 3) {
-                    console.log("Scissor");
+                } else if (randomNum == 3) {
+                    return 'Scissors'
                 }
             }
-            computerPlay();
+            function playRound(playerSelection, computerSelection) {
+                console.log("New round!");
+                playerSelection = prompt("Choose: Rock, Paper or Scissors");
+                playerSelection = playerSelection.toLocaleLowerCase();
+                computerSelection = computerPlay().toLocaleLowerCase();
+
+                if (playerSelection == 'rock' && computerSelection == 'rock' 
+                    || playerSelection =='paper' && computerSelection == 'paper'
+                    || playerSelection == 'scissors' && computerSelection == 'scissors') {
+                    return `It's a tie! You chose: ${ playerSelection } and Computer chose: ${computerSelection}`;
+                
+                } else if (playerSelection == 'rock' && computerSelection == 'paper' 
+                    || playerSelection == 'scissors' && computerSelection == 'rock' 
+                    || playerSelection == 'paper' && computerSelection == 'scissors') {
+                    return `You Lose! ${ computerSelection } beats ${ playerSelection }`;
+                
+                } else if (computerSelection == 'rock' && playerSelection == 'paper' 
+                || computerSelection == 'scissors' && playerSelection == 'rock' 
+                || computerSelection == 'paper' && playerSelection == 'scissors') {
+                    return `You Win! ${ playerSelection } beats ${ computerSelection }`;
+                
+                } else if (playerSelection != 'rock'
+                || playerSelection != 'paper' 
+                || playerSelection != 'scissors') {
+                    return `${ playerSelection } is not a valid option`;
+                }
+            }
+            playRound();
 
         </script>
     </body>
