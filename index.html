@@ -19,25 +19,23 @@
                 }
             }
             function playRound(playerSelection, computerSelection) {
-                console.log("New round!");
-                playerSelection = prompt("Choose: Rock, Paper or Scissors");
-                playerSelection = playerSelection.toLocaleLowerCase();
-                computerSelection = computerPlay().toLocaleLowerCase();
+                playerSelection = playerSelection.toLowerCase();
+                computerSelection = computerSelection.toLowerCase();
 
                 if (playerSelection == 'rock' && computerSelection == 'rock' 
                     || playerSelection =='paper' && computerSelection == 'paper'
                     || playerSelection == 'scissors' && computerSelection == 'scissors') {
-                    return `It's a tie! You chose: ${ playerSelection } and Computer chose: ${computerSelection}`;
+                        return `It's a tie! You chose: ${ playerSelection } and Computer chose: ${computerSelection}`;
                 
                 } else if (playerSelection == 'rock' && computerSelection == 'paper' 
                     || playerSelection == 'scissors' && computerSelection == 'rock' 
                     || playerSelection == 'paper' && computerSelection == 'scissors') {
-                    return `You Lose! ${ computerSelection } beats ${ playerSelection }`;
+                        return `You Lose! ${ computerSelection } beats ${ playerSelection }`;
                 
                 } else if (computerSelection == 'rock' && playerSelection == 'paper' 
                 || computerSelection == 'scissors' && playerSelection == 'rock' 
                 || computerSelection == 'paper' && playerSelection == 'scissors') {
-                    return `You Win! ${ playerSelection } beats ${ computerSelection }`;
+                        return `You Win! ${ playerSelection } beats ${ computerSelection }`;
                 
                 } else if (playerSelection != 'rock'
                 || playerSelection != 'paper' 
@@ -45,8 +43,22 @@
                     return `${ playerSelection } is not a valid option`;
                 }
             }
-            playRound();
 
+            function game() {
+                let playerPoints = 0;
+                let computerPoints = 0;
+
+                console.log("ROCK-PAPER-SCISSORS");
+                
+                for(let rounds=1; rounds < 6; rounds++) {
+                    console.log(`____________________`)
+                    console.log(`Round ${ rounds }:`)
+                    playerSelection = prompt("Choose rock, paper or scissors");
+                    console.log(playRound(playerSelection, computerPlay()));
+                }
+            }
+
+            game();
         </script>
     </body>
 </html>
